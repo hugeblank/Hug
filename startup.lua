@@ -213,7 +213,7 @@ end
   --And setting them to programs
   shell.setCompletionFunction("lib/hug.lua", completeProgram)
   shell.setCompletionFunction("lib/ls.lua", completeDir)
-  shell.setCompletionFunction(getSetting("hug.defaultEditor"), completeFile)
+  shell.setCompletionFunction(string.sub(getSetting("hug.defaultEditor"), 2, string.len(getSetting("hug.defaultEditor"))), completeFile)
   shell.setCompletionFunction("rom/programs/cd.lua", completeChgDir)
   shell.setCompletionFunction("lib/bag.lua", completeBag)
 
