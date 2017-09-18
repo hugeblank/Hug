@@ -225,7 +225,6 @@ elseif args[1] == "remove" or args[1] == "rm" then
 	end
 elseif args[1] == "info" then 
 	if type(args[2]) == "string" then
-		local tflag
 		local dbfile = fs.open("/var/.bag_databases", "r")
 		local db = 0
 		while db do
@@ -256,6 +255,29 @@ elseif args[1] == "info" then
 	else
 		print("Usage: bag info <bag-package>")
 	end
+elseif args[1] == "list" then 
+	local pkgList = {}
+	local dbfile = fs.open("/var/.bag_databases", "r")
+	local db = 0
+	while db do
+		db = dbfile.readLine()
+		if db then
+			local dbsite = http.get(db)
+			repeat sleep() until dbsite
+			local rawpkg = 0
+			while rawpkg do
+				local pkg = {}
+				rawpkg = dbsite.readLine()
+				if rawpkg then
+					for i in string.gmatch(rawpkg, "%S+") do
+						pkg[#pkg+1] = i
+					end
+					pkgList[#pkgList+1] = pkg[1]
+				end
+			end
+		end
+	end
+	textutils.pagedTabulate(pkgList)
 else
 	print("Usage: ")
 	print("bag addbase <pastebin-ID>")
