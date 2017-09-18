@@ -1,0 +1,16 @@
+function domain()
+	local dfile = fs.open("/var/.domain", "r")
+	local domain = dfile.readLine()
+	dfile.close()
+	return domain
+end
+function name()
+	local ufile = fs.open("/tmp/.uname", "r")
+	local uname = ufile.readLine()
+	ufile.close()
+	return uname
+end
+
+function info()
+	return name(), domain()
+end

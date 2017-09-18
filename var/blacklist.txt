@@ -1,0 +1,4 @@
+blacklist.txt
+hilight
+startup
+startup.lua

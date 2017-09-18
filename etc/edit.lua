@@ -1,0 +1,106 @@
+if not http then
+  error("http api required.")
+end
+
+local branch="master"
+
+local args={...}
+
+local verToBranch={release="master",beta="dev"}
+
+local bindir, apidir
+
+local function fixDir(dir)
+  local d=dir:match("^(.-)[/|\\]?$")
+  return d
+end
+
+for i=1,#args do
+  local arg,val=args[i]:match("-(%w+)=?(.*)")
+  if arg then
+    arg=arg:lower()
+    if arg=="ver" then
+      if val then
+        val=val:lower()
+        if verToBranch[val] then
+          branch=verToBranch[val]
+        else
+          error("invalid version '"..val.."'")
+        end
+      else
+        error("Must specify a version 'release' or 'beta' to argument 'ver'!")
+      end
+    elseif arg=="apidir" then
+      if fs.exists(val) then
+        apidir=fixDir(val)
+      else
+        error("Specified apidir does not exist!")
+      end
+    elseif arg=="bindir" then
+      if fs.exists(val) then
+        bindir=fixDir(val)
+      else
+        error("Specified apidir does not exist!")
+      end
+    else
+      error("unknown argument '"..arg.."'")
+    end
+  end
+end
+
+function grabFileText(name)
+  write("downloading '"..name.."'...")
+  local req=http.get("https://raw.githubusercontent.com/GopherAtl/edit-plus/"..branch.."/"..name)
+  if req==nil then
+    error("Cound't make request!")
+  end
+
+  if req.getResponseCode()~=200 then
+    req.close()
+    error("Unexpected response code "..req.getResponseCode())
+  end
+
+  local text=req.readAll()
+
+  req.close()
+  print("success! "..#text.." bytes")
+  return text
+end
+
+function grabFile(name,targetDir)
+
+  local text=grabFileText(name)
+  local path=(targetDir or shell.dir())
+  
+  local file=fs.open(fs.combine(path,name),"w")
+  if not file then
+    error("Couldn't open file '"..name.."' for writing!")
+  end
+
+  file.write(text)
+  file.close()
+end
+
+bindir=bindir or shell.dir()
+apidir=apidir or bindir
+
+local filelist=grabFileText("filelist.txt")
+for ftype,file in filelist:gmatch("(...):(%S*)") do
+  grabFile(file,ftype=="bin" and bindir or apidir)
+end
+
+local settings = {
+  recentFiles = { },
+  syntaxStyle = "pastebin",
+  bindir=bindir,
+  apidir=apidir,
+}
+
+
+local file=fs.open(bindir.."/.edit+","w")
+if not file then
+  error("Error!","Couldn't open settings file to write!")
+else
+  file.write(textutils.serialize(settings))
+  file.close()
+end

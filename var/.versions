@@ -1,0 +1,18 @@
+{
+  [ "(base_blacklist)" ] = "\"1.0\"",
+  [ "(extend_1.79)" ] = "\"1.0\"",
+  [ "(base_greeter)" ] = "\"1.0\"",
+  [ "(base_loader)" ] = "\"1.0\"",
+  [ "(base_user)" ] = "\"1.0\"",
+  [ "(base_adduser)" ] = "\"1.0\"",
+  [ "(base_hug)" ] = "\"1.0\"",
+  [ "(base_bag)" ] = "\"1.1\"",
+  [ "(base_startup)" ] = "\"0.5\"",
+  [ "(startup_legacy)" ] = "\"1.0\"",
+  [ "(base_passwd)" ] = "\"1.0\"",
+  [ "(base_ls)" ] = "\"1.0\"",
+  [ "(base_exit)" ] = "\"1.0\"",
+  [ "(base_sha)" ] = "\"1.1\"",
+  [ "(base_edit)" ] = "\"1.0\"",
+  [ "(base_deluser)" ] = "\"1.0\"",
+}

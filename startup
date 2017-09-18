@@ -1,0 +1,6 @@
+--for legacy CC compatibility
+if (...) then
+	shell.run("/startup.lua "..(...))
+else
+	shell.run("/startup.lua ")
+end
