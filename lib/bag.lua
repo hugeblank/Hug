@@ -241,11 +241,14 @@ elseif args[1] == "info" then
 						for i in string.gmatch(rawpkg, "%S+") do
 							pkg[#pkg+1] = i
 						end
-						for j = 5, #pkg do
-							pkg[5] = pkg[j].." "..pkg[j+1].." "
+						local info = pkg[5].." "
+						if pkg[5] then
+							for j = 6, #pkg do
+								info = info..pkg[j].." "
+							end
 						end
 						if pkg[1] == args[2] and pkg[5] then
-							print("Information about"..args[2]..":\n"..pkg[5])
+							print("Information about"..args[2]..":\n"..info)
 							return
 						elseif pkg[1] == args[2] and not pkg[5] then
 							tflag = true
