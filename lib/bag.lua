@@ -225,6 +225,7 @@ elseif args[1] == "remove" or args[1] == "rm" then
 	end
 elseif args[1] == "info" then 
 	if type(args[2]) == "string" then
+		local tflag
 		local dbfile = fs.open("/var/.bag_databases", "r")
 		local db = 0
 		while db do
@@ -244,13 +245,16 @@ elseif args[1] == "info" then
 							print("Information about"..args[2]..":\n"..pkg[5])
 							return
 						elseif pkg[1] == args[2] and not pkg[5] then
-							print("No information found on "..args[2])
-						else
-							print(args[2].." doesn't exist.")
+							tflag = true
 						end
 					end
 				end
 			end
+		end
+		if tflag then 
+			print("No information found on "..args[2])
+		else
+			print(args[2].." doesn't exist.")
 		end
 	else
 		print("Usage: bag info <bag-package>")
