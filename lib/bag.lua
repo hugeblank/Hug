@@ -241,6 +241,9 @@ elseif args[1] == "info" then
 						for i in string.gmatch(rawpkg, "%S+") do
 							pkg[#pkg+1] = i
 						end
+						for j = 5, #pkg do
+							pkg[5] = pkg[j].." "..pkg[j+1].." "
+						end
 						if pkg[1] == args[2] and pkg[5] then
 							print("Information about"..args[2]..":\n"..pkg[5])
 							return
