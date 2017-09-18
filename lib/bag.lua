@@ -256,7 +256,7 @@ elseif args[1] == "info" then
 							end
 						end
 						if pkg[1] == args[2] and pkg[5] then
-							print("Information about"..args[2]..":\n"..info)
+							print("Information about "..args[2]..":\n"..info)
 							return
 						elseif pkg[1] == args[2] and not pkg[5] then
 							tflag = true
