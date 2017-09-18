@@ -86,9 +86,9 @@ elseif args[1] == "grab" then
 						end
 					end
 				end
+				dbsite.close()
 			end
 		end
-		dbsite.close()
 		dbfile.close()
 		if tflag then
 			print(args[2].." is already up to date.")
@@ -163,10 +163,10 @@ elseif args[1] == "update" then
 						end
 					end
 				end
+				dbsite.close()
 			end
 		end
 		dbfile.close()
-		dbsite.close()
 		if tflag then
 			print(realk.." is already up to date. ("..string.gsub(ver[k], "[\"+]", "")..")")
 		else
@@ -221,10 +221,10 @@ elseif args[1] == "remove" or args[1] == "rm" then
 						end
 					end
 				end
+				dbsite.close()
 			end
 		end
 		dbfile.close()
-		dbsite.close()
 		if not flag then
 			print(args[2].." is not in your bag")
 		end
@@ -263,10 +263,10 @@ elseif args[1] == "info" then
 						end
 					end
 				end
+				dbsite.close()
 			end
 		end
 		dbfile.close()
-		dbsite.close()
 		if tflag then 
 			print("No information found on "..args[2])
 		else
@@ -295,10 +295,10 @@ elseif args[1] == "list" then
 					pkgList[#pkgList+1] = pkg[1]
 				end
 			end
+			dbsite.close()
 		end
 	end
 	dbfile.close()
-	dbsite.close()
 	textutils.pagedTabulate(pkgList)
 else
 	print("Usage: ")
