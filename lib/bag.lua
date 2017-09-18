@@ -156,7 +156,6 @@ elseif args[1] == "update" then
 							verfile.write(vertbl)
 							verfile.close()
 							print("Updated "..realk.." to "..pkg[4].." from "..ver[k].." successfully.")
-							return
 						end
 					end
 				end
