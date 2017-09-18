@@ -15,4 +15,4 @@ base_passwd https://raw.githubusercontent.com/hugeblank/Hug/master/lib/passwd.lu
 base_blacklist https://raw.githubusercontent.com/hugeblank/Hug/master/var/blacklist.txt /var/blacklist.txt "1.0.1"
 startup_legacy https://raw.githubusercontent.com/hugeblank/Hug/master/startup /startup "1.0.2"
 base_startup https://raw.githubusercontent.com/hugeblank/Hug/master/startup.lua /startup.lua "0.5.3"
-base_bag https://raw.githubusercontent.com/hugeblank/Hug/master/lib/bag.lua /lib/bag.lua "1.2"
+base_bag https://raw.githubusercontent.com/hugeblank/Hug/master/lib/bag.lua /lib/bag.lua "1.3"

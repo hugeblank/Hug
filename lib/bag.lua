@@ -223,6 +223,39 @@ elseif args[1] == "remove" or args[1] == "rm" then
 	else
 		print("Usage: bag remove <bag-package>")
 	end
+elseif args[1] == "info" then 
+	if type(args[2]) == "string" then
+		local tflag
+		local dbfile = fs.open("/var/.bag_databases", "r")
+		local db = 0
+		while db do
+			db = dbfile.readLine()
+			if db then
+				local dbsite = http.get(db)
+				repeat sleep() until dbsite
+				local rawpkg = 0
+				while rawpkg do
+					local pkg = {}
+					rawpkg = dbsite.readLine()
+					if rawpkg then
+						for i in string.gmatch(rawpkg, "%S+") do
+							pkg[#pkg+1] = i
+						end
+						if pkg[1] == args[2] and pkg[5] then
+							print("Information about"..args[2]..":\n"..pkg[5])
+							return
+						elseif pkg[1] == args[2] and not pkg[5] then
+							print("No information found on "..args[2])
+						else
+							print(args[2].." doesn't exist.")
+						end
+					end
+				end
+			end
+		end
+	else
+		print("Usage: bag info <bag-package>")
+	end
 else
 	print("Usage: ")
 	print("bag addbase <pastebin-ID>")
