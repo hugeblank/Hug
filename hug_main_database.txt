@@ -1,6 +1,6 @@
-base_loader https://raw.githubusercontent.com/hugeblank/Hug/master/boot/loader.lua /boot/loader.lua "1.0"
-base_edit https://raw.githubusercontent.com/GopherAtl/edit-plus/master/edit%2B /etc/edit.lua "1.1"
-base_highlight https://raw.githubusercontent.com/GopherAtl/edit-plus/master/hilight /etc/hilight "1.0"
+base_loader https://raw.githubusercontent.com/hugeblank/Hug/master/boot/loader.lua /boot/loader.lua "1.0" A basic demonstration of a valid bootloader.
+base_edit https://raw.githubusercontent.com/GopherAtl/edit-plus/master/edit%2B /etc/edit.lua "1.1" An advanced form of edit by GopherAtl
+base_highlight https://raw.githubusercontent.com/GopherAtl/edit-plus/master/hilight /etc/hilight "1.0" API for GopherAtl's edit
 extend_1.79 https://pastebin.com/raw/f8zycUS6 /etc/extend.lua "1.0.1"
 extend_1.80 https://pastebin.com/raw/MbcnJRAU /etc/extend.lua "1.0.1"
 base_sha https://raw.githubusercontent.com/hugeblank/Hug/master/lib/API/sha /lib/API/sha "1.1.1"
