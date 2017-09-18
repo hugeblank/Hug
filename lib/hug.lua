@@ -1,6 +1,6 @@
 --The pwetty UI that you're greeted with.
 os.loadAPI("lib/API/user")
-uname, domain = user.info()
+uname = user.name()
 term.setTextColor(colors.lime)
 print(os.version())
 print("Welcome, "..uname)
@@ -27,7 +27,9 @@ repeat
   	term.setCursorPos(1, y)
   end
   term.setTextColor(colors.yellow)
-  term.write(uname.."@"..domain.." ")
+  local label = os.getComputerLabel()
+  if not label then label = os.getComputerID() end
+  term.write(uname.."@"..label.." ")
   term.setTextColor(colors.green)
   term.write("HUG16 ")
   term.setTextColor(colors.orange)
