@@ -1,5 +1,5 @@
 base_loader https://raw.githubusercontent.com/hugeblank/Hug/master/boot/loader.lua /boot/loader.lua "1.0"
-base_edit https://pastebin.com/raw/sR9t4iRZ /etc/edit.lua "1.0.1"
+base_edit https://raw.githubusercontent.com/GopherAtl/edit-plus/master/edit%2B /etc/edit.lua "1.1"
 extend_1.79 https://pastebin.com/raw/f8zycUS6 /etc/extend.lua "1.0.1"
 extend_1.80 https://pastebin.com/raw/MbcnJRAU /etc/extend.lua "1.0.1"
 base_sha https://raw.githubusercontent.com/hugeblank/Hug/master/lib/API/sha /lib/API/sha "1.1.1"
