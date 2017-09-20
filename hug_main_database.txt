@@ -15,4 +15,4 @@ base_passwd https://raw.githubusercontent.com/hugeblank/Hug/master/lib/passwd.lu
 base_blacklist https://raw.githubusercontent.com/hugeblank/Hug/master/var/blacklist.txt /var/blacklist.txt "1.0.1" The file for ls that allows for specific programs to not be displayed.
 startup_legacy https://raw.githubusercontent.com/hugeblank/Hug/master/startup /startup "1.0.2" Legacy startup for CC 1.79 and below
 base_startup https://raw.githubusercontent.com/hugeblank/Hug/master/startup.lua /startup.lua "0.5.3" Base startup for Hug. The backbone of the Hug Shell Project.
-base_bag https://raw.githubusercontent.com/hugeblank/Hug/master/lib/bag.lua /lib/bag.lua "1.3.5.1" Bag. The package manager for Hug, can be used independently of Hug.
+base_bag https://raw.githubusercontent.com/hugeblank/Hug/master/lib/bag.lua /lib/bag.lua "1.3.6" Bag. The package manager for Hug, can be used independently of Hug.
