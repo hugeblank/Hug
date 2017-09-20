@@ -11,9 +11,4 @@ home/hugeblank/views.lua
 lib/API/edit+
 lib/API/hilight
 tmp/.uname
-var/.bag_databases
-var/.domain
-var/.userlist
-var/.versions
-var/pass/.hugeblank_password
-var/pass/.hugeblank_salt
+var/
