@@ -64,25 +64,29 @@ elseif args[1] == "grab" then
 						if flag then
 							print("Package found, installing...")
 							local pkgfile = http.get(pkg[2])
-							local file = fs.open(pkg[3], "w")
-							file.write(pkgfile.readAll())
-							pkgfile.close()
-							file.close()
-							local vertbl
-							if fs.exists("/var/.versions") then
-								local verfile = fs.open("/var/.versions", "r")
-								vertbl = textutils.unserialize(verfile.readAll())
+							if pkgfile then
+								local file = fs.open(pkg[3], "w")
+								file.write(pkgfile.readAll())
+								pkgfile.close()
+								file.close()
+								local vertbl
+								if fs.exists("/var/.versions") then
+									local verfile = fs.open("/var/.versions", "r")
+									vertbl = textutils.unserialize(verfile.readAll())
+									verfile.close()
+									vertbl[tostring("("..args[2]..")")] = pkg[4]
+									vertbl = textutils.serialize(vertbl)
+								else
+									vertbl = textutils.serialize({[tostring("("..args[2]..")")] = pkg[4]})
+								end
+								verfile = fs.open("/var/.versions", "w")
+								verfile.write(vertbl)
 								verfile.close()
-								vertbl[tostring("("..args[2]..")")] = pkg[4]
-								vertbl = textutils.serialize(vertbl)
+								print("Package added to bag successfully.")
+								return
 							else
-								vertbl = textutils.serialize({[tostring("("..args[2]..")")] = pkg[4]})
+								print(args[2].." raw file link broken.")
 							end
-							verfile = fs.open("/var/.versions", "w")
-							verfile.write(vertbl)
-							verfile.close()
-							print("Package added to bag successfully.")
-							return
 						end
 					end
 				end
@@ -142,24 +146,28 @@ elseif args[1] == "update" then
 						if flag then
 							print("Update found, installing...")
 							local pkgfile = http.get(pkg[2])
-							local file = fs.open(pkg[3], "w")
-							file.write(pkgfile.readAll())
-							pkgfile.close()
-							file.close()
-							local vertbl
-							if fs.exists("/var/.versions") then
-								local verfile = fs.open("/var/.versions", "r")
-								vertbl = textutils.unserialize(verfile.readAll())
+							if pkgfile then
+								local file = fs.open(pkg[3], "w")
+								file.write(pkgfile.readAll())
+								pkgfile.close()
+								file.close()
+								local vertbl
+								if fs.exists("/var/.versions") then
+									local verfile = fs.open("/var/.versions", "r")
+									vertbl = textutils.unserialize(verfile.readAll())
+									verfile.close()
+									vertbl[pkg[1]] = pkg[4]
+									vertbl = textutils.serialize(vertbl)
+								else
+									vertbl = textutils.serialize({[pkg[1]] = pkg[4]})
+								end
+								verfile = fs.open("/var/.versions", "w")
+								verfile.write(vertbl)
 								verfile.close()
-								vertbl[pkg[1]] = pkg[4]
-								vertbl = textutils.serialize(vertbl)
+								print("Updated "..realk.." to "..pkg[4].." from "..ver[k].." successfully.")
 							else
-								vertbl = textutils.serialize({[pkg[1]] = pkg[4]})
+								print(realk.." raw file link broken")
 							end
-							verfile = fs.open("/var/.versions", "w")
-							verfile.write(vertbl)
-							verfile.close()
-							print("Updated "..realk.." to "..pkg[4].." from "..ver[k].." successfully.")
 						end
 					end
 				end
