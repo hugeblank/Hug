@@ -2,15 +2,20 @@ args = {...}
 if not args[1] == nil and (not fs.exists(args[1]) or not args[2]) then
   printError("No directory named "..args[1]..".")
 else
+  local blacklist = {}
   local list
   local listarg
-  local blist = fs.open("var/blacklist.txt", "r")
-  local blacklist = {}
-  repeat
-    local line = blist.readLine()
-    blacklist[#blacklist+1] = line
-  until line == nil
-  blist.close()
+  if fs.exists("/var/blacklist.txt") then
+    local blist = fs.open("var/blacklist.txt", "r")
+    blacklist = {}
+    repeat
+      local line = blist.readLine()
+      blacklist[#blacklist+1] = line
+    until line == nil
+    blist.close()
+  else
+    blacklist = {}
+  end
   if args[1] == nil or (args[1] == "-h" and not args[2]) then
     list = fs.list(shell.dir())
     listarg = shell.dir()
