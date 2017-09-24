@@ -7,10 +7,10 @@ args = {...}
 if args[1] == "addbase" then
 	if type(args[2]) == "string" then
 		print("Validating database...")
-		if http.checkURL("https://pastebin.com/raw/"..args[2]) then
+		if http.checkURL(args[2]) then
 			print("Database validated, adding to database list...")
 			local dbfile = fs.open("/var/.bag_databases", "a")
-			dbfile.writeLine("https://pastebin.com/raw/"..args[2])
+			dbfile.writeLine(args[2])
 			dbfile.close()
 			print("Database added.")
 		else
