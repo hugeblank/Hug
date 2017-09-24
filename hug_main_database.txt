@@ -10,7 +10,7 @@ base_deluser https://raw.githubusercontent.com/hugeblank/Hug/master/lib/deluser.
 base_exit https://raw.githubusercontent.com/hugeblank/Hug/master/lib/exit.lua /lib/exit.lua "1.0.1" Hug's replacement of the default "exit".
 base_greeter https://raw.githubusercontent.com/hugeblank/Hug/master/lib/greeter.lua /lib/greeter.lua "1.0.1" A basic demonstration of a greeter for Hug.
 base_hug https://raw.githubusercontent.com/hugeblank/Hug/master/lib/hug.lua /lib/hug.lua "1.1" The central package containing Hug Shell.
-base_ls https://raw.githubusercontent.com/hugeblank/Hug/master/lib/ls.lua /lib/ls.lua "1.0.1" A stylish and functional take of the default "ls".
+base_ls https://raw.githubusercontent.com/hugeblank/Hug/master/lib/ls.lua /lib/ls.lua "1.1" A stylish and functional take of the default "ls".
 base_passwd https://raw.githubusercontent.com/hugeblank/Hug/master/lib/passwd.lua /lib/passwd.lua "1.0.1" Add or change the logged in users password
 startup_legacy https://raw.githubusercontent.com/hugeblank/Hug/master/startup /startup "1.0.2" Legacy startup for CC 1.79 and below
 base_startup https://raw.githubusercontent.com/hugeblank/Hug/master/startup.lua /startup.lua "0.5.3" Base startup for Hug. The backbone of the Hug Shell Project.
