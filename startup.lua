@@ -110,12 +110,13 @@ end
   shell.setAlias("l", "/lib/ls.lua")
   shell.setAlias("dir", "/lib/ls.lua")
   local blist = {}
-  local blacklist = fs.open("/var/blacklist.txt", "r")
-  repeat
-    local line = blacklist.readLine()
-    blist[#blist+1] = line
-  until line == nil
-
+  if fs.exists("/var/blacklist.txt") then
+    local blacklist = fs.open("/var/blacklist.txt", "r")
+    repeat
+      local line = blacklist.readLine()
+      blist[#blist+1] = line
+    until line == nil
+  end
   shell.run("/etc/extend.lua")
 
   --clear screen for greeter load
